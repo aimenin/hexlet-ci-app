@@ -1,0 +1,19 @@
+name: ьфшт
+on: push
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Клонируем репозиторий
+      - uses: actions/checkout@v3
+      # Устанавливаем Node.js
+      - uses: actions/setup-node@v3
+      # Ставим зависимости
+      - run: make setup
+      # Запускаем линтер
+      - name: linter
+        run: make lint
+      # Запускаем тесты
+      - name: run tests
+        run: make test
